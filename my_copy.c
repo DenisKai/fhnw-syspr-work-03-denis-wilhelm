@@ -17,5 +17,8 @@ int main(int argc, char *argv[]) {
 		r = read(fd, buf, len);
 	}
 
+	close(fd);
+	close(fd_w);
+
 	return 0;
 }
