@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int main (void) {
-	int fd = open("hello.txt", O_RDWR);
+int main (int argc, char *argv[]) {
+	int fd = open(argv[1], O_RDONLY);
 	if (fd == -1) {
 		perror("open");
 		return -1;
