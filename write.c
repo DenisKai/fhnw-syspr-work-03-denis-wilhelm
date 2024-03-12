@@ -11,5 +11,7 @@ int main (int argc, char *argv[]) {
 	int w = write(fd, msg, len);
 	if (w == -1) { perror("write"); return -1; }
 
+	close(fd); //close file
+	// other stuff if needed
 	return 0;
 }
