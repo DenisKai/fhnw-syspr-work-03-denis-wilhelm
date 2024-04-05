@@ -3,6 +3,7 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
+	printf("Arguments: %i", argc);
 	int fd = open(argv[1], O_RDONLY);
 
 	int len = 10;
@@ -10,8 +11,7 @@ int main(int argc, char *argv[]) {
 	int r = read(fd, buf, len);
 
 
-	int fd_w = open(argv[2], O_WRONLY|O_TRUNC|O_CREAT, S_IRUSR|S_IWUSR);
-	int w;
+	int fd_w = open(argv[2], O_WRONLY|O_TRUNC|O_CREAT);
 	while (r > 0) {
 		write(fd_w, buf, r);
 		r = read(fd, buf, len);
