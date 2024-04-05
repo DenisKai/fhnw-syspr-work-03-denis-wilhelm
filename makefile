@@ -1,12 +1,23 @@
-CC=gcc 
-CFLAGS=-std=c99 -pedantic -pedantic-errors -Werror -Wall -Wextra
+CC = gcc
+CFLAGS = -std=c99 -pedantic -pedantic-errors -Werror -Wall -Wextra
 
-all: my_copy
+# Find all source files in the current directory
+SRCS := $(wildcard *.c)
 
-my_copy: my_copy.c
+# Generate executable names by removing the .c extension
+EXECS := $(SRCS:.c=)
 
+# Default target to build all executables
+all: $(EXECS)
+
+# Rule to compile each source file into an executable
+%: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+# Target to build a single executable
+%: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+# Target to clear all binaries
 clean:
-	rm -f my_copy
-
-build:
-	gcc -o mcopy my_copy.c
+	rm -f $(EXECS)
