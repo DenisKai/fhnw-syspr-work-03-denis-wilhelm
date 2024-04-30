@@ -5,6 +5,7 @@
 
 int main(int argc, char *argv[]) {
 	printf("Arguments: %i", argc);
+	
 	int fd = open(argv[1], O_RDONLY);
 
 	int len = 10;
